@@ -23,6 +23,17 @@ public class Kata5P1 {
         } catch (SQLException e) {
             System.out.println(e.getMessage());
         }
+        
+        String createSQL = "CREATE TABLE IF NOT EXISTS EMAIL (\n"
+                + " Id integer PRIMARY KEY AUTOINCREMENT,\n"
+                + " Mail text NOT NULL);";
+        try (Connection conn = connect();
+                Statement stmt = conn.createStatement()) {
+            stmt.execute(createSQL);
+            System.out.println("Tabla creada");
+        } catch (SQLException e) {
+            System.out.println(e.getMessage());
+        }
     }
 
     private static Connection connect() {
